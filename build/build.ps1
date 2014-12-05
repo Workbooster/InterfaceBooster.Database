@@ -12,8 +12,8 @@ properties {
   $toolsDir = "$baseDir\tools"
   $workingDir = "$baseDir\release"
   $builds = @(
-    @{Name = "InterfaceBooster.Database.Interfaces"; TestsName = ""; TestsFunction = ""; Constants=""; FinalDir="Net45"; NuGetDir = "net45"; Framework="net-4.5"; Sign=$false; Unsafe=$false},
-    @{Name = "InterfaceBooster.Database.Core"; TestsName = "InterfaceBooster.Database.Test.Core"; TestsFunction = "NUnitTests"; Constants=""; FinalDir="Net45"; NuGetDir = "net45"; Framework="net-4.5"; Sign=$false; Unsafe=$true}
+      @{Name = "InterfaceBooster.Database.Core"; TestsName = "InterfaceBooster.Database.Test.Core"; TestsFunction = "NUnitTests"; Constants=""; FinalDir="Net45"; NuGetDir = "net45"; Framework="net-4.5"; Sign=$false; Unsafe=$true},
+      @{Name = "InterfaceBooster.Database.Interfaces"; TestsName = ""; TestsFunction = ""; Constants=""; FinalDir="Net45"; NuGetDir = "net45"; Framework="net-4.5"; Sign=$false; Unsafe=$false}
   )
 }
 
@@ -55,7 +55,7 @@ task Build -depends Clean {
 
       Write-Host
       Write-Host "Building"
-      exec { msbuild "/t:Clean;Rebuild" /p:Configuration=Release "/p:Platform=x64" /p:OutputPath=bin\Release\$finalDir\ /p:AssemblyOriginatorKeyFile=$signKeyPath "/p:SignAssembly=$sign" "/p:TreatWarningsAsErrors=$treatWarningsAsErrors" "/p:VisualStudioVersion=12.0" "/p:AllowUnsafeBlocks=$unsafe" (GetConstants $build.Constants $sign) "$sourceDir\$name\$name.csproj" | Out-Default } "Error building $name"
+      exec { msbuild "/t:Clean;Rebuild" /p:Configuration=Release /p:DocumentationFile=bin\Release\$finalDir\$name.xml "/p:Platform=x64" /p:OutputPath=bin\Release\$finalDir\ /p:AssemblyOriginatorKeyFile=$signKeyPath "/p:SignAssembly=$sign" "/p:TreatWarningsAsErrors=$treatWarningsAsErrors" "/p:VisualStudioVersion=12.0" "/p:AllowUnsafeBlocks=$unsafe" (GetConstants $build.Constants $sign) "$sourceDir\$name\$name.csproj" | Out-Default } "Error building $name"
     }
   }
 }
