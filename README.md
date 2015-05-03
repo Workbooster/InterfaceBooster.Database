@@ -27,8 +27,8 @@ The code in src/InterfaceBooster.Database.Core/Storage/PrimitiveSerializer.cs is
 ## Contact
 
 Workbooster GmbH<br/>
-Pfarrain 3a<br/>
-8604 Volketswil (Switzerland)<br/>
+Obermuelistrasse 85<br/>
+8320 Fehraltorf (Switzerland)<br/>
 
 Web: www.workbooster.ch<br/>
 E-Mail: info@workbooster.ch<br/>
