@@ -266,6 +266,28 @@ namespace InterfaceBooster.Database.Core
             return false;
         }
 
+        #region STATIC HELPER METHODS
+
+        /// <summary>
+        /// Checks whether a directory is a Synery Database working directory
+        /// </summary>
+        /// <param name="workingDirectoryPath">absolute path</param>
+        /// <returns></returns>
+        public static bool IsDatabaseWorkingDirectory(string workingDirectoryPath)
+        {
+            if (Directory.Exists(workingDirectoryPath) == false)
+                return false;
+
+            string instanceDataFilePath = Path.Combine(workingDirectoryPath, _InstanceDataFileName);
+
+            if (File.Exists(instanceDataFilePath) == false)
+                return false;
+
+            return true;
+        }
+
+        #endregion
+
         #endregion
 
         #region INTERNAL METHODS
